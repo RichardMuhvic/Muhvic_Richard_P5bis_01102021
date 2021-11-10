@@ -1,11 +1,10 @@
 // 1-Récupérer les donnes de l'API avec fetch :
 fetch("http://localhost:3000/api/products")
-    .then( function(res) {
+    .then(function(res) {
         return res.json();
     })
-    .then(function(value) {
-        console.log(value);
-        product[i];
+    .then(function(product) {
+        console.log(product);
     });
 
 // 2-Faire une boucle "for" :
@@ -22,5 +21,6 @@ for(let i=0; i<product.length; i++) {
             <p class="productDescription">Dis enim malesuada risus sapien gravida nulla nisl arcu. Dis enim malesuada risus sapien gravida nulla nisl arcu.</p>
         </article>
     </a>`;
-
+    
 };
+console.log(product[i]);
