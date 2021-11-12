@@ -18,21 +18,24 @@ function productSelected(items) {
 
     //récupération de l'image :
     let blockImage = document.getElementsByClassName('item_img');
-    blockImage.innerHTML += `<img src=${items.imageUrl} alt=${items.altTxt}>`;
+    blockImage.innerHTML = `<img src=${items.imageUrl} alt=${items.altTxt}>`;
+    console.log(blockImage);
 
     //récupération du titre :
     let blockTitle = document.getElementById('title');
-    blockTitle.innerHTML += `<h1 id="title">${items.name}</h1>`;
+    blockTitle.innerHTML = `<h1 id="title">${items.name}</h1>`;
+    console.log(blockTitle)
 
     //récupération du prix :
     let blockPrice = document.getElementById('price');
     blockPrice.innerHTML = `<span id="price">${items.price}</span>€</p>`;
+    console.log(blockPrice)
 
     //récupération de la description :
     //<p id="description"><!-- Dis enim malesuada risus sapien gravida nulla nisl arcu. --></p>
     let blockDescription = document.getElementById('description');
     blockDescription.innerHTML = `<p id="description">${items.description}</p>`;
-
+    console.log(blockDescription)
 
     //récupération des couleurs :
     //<select name="color-select" id="colors">
