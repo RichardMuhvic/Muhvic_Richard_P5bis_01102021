@@ -10,25 +10,31 @@ fetch("http://localhost:3000/api/products/" + product)
     })
     .then(function(data) {
         console.log(data)
+        productSelected(data)
     });
 
 
-function name(params) {
-    //<div class="item__img">
-    //<img src="../images/logo.png" alt="Photographie d'un canapé"> -->
-    //</div>
+function productSelected(items) {
+
+    //récupération de l'image :
     let blockImage = document.getElementsByClassName('item_img');
-    blockImage.innerHTML = `<img src="${}" alt="${}">`
+    blockImage.innerHTML += `<img src=${items.imageUrl} alt=${items.altTxt}>`;
 
-    //<h1 id="title"><!-- Nom du produit --></h1>
+    //récupération du titre :
+    let blockTitle = document.getElementById('title');
+    blockTitle.innerHTML += `<h1 id="title">${items.name}</h1>`;
 
+    //récupération du prix :
+    let blockPrice = document.getElementById('price');
+    blockPrice.innerHTML = `<span id="price">${items.price}</span>€</p>`;
 
-    //<span id="price"><!-- 42 --></span>
-
-
+    //récupération de la description :
     //<p id="description"><!-- Dis enim malesuada risus sapien gravida nulla nisl arcu. --></p>
+    let blockDescription = document.getElementById('description');
+    blockDescription.innerHTML = `<p id="description">${items.description}</p>`;
 
 
+    //récupération des couleurs :
     //<select name="color-select" id="colors">
         //<option value="">--SVP, choisissez une couleur --</option>
             //<option value="vert">vert</option>
