@@ -17,7 +17,7 @@ fetch("http://localhost:3000/api/products/" + product)
 function productSelected(items) {
 
     //récupération de l'image :
-    let blockImage = document.getElementsByClassName('item_img');
+    let blockImage = document.querySelector('.item__img');
     blockImage.innerHTML = `<img src=${items.imageUrl} alt=${items.altTxt}>`;
     console.log(blockImage);
 
