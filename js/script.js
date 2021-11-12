@@ -17,8 +17,8 @@ function product(item) {
             <article>
                 <img src=${item[i].imageUrl} alt=${item[i].altTxt}>
                 <h3 class="productName">${item[i].name}</h3>
-                <p class=${item[i].description}</p>
+                <p class="productDescription">${item[i].description}</p>
             </article>
-        </a>`;
+        </a>`;  
     };
 };
