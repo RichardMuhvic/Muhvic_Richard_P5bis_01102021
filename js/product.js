@@ -41,33 +41,38 @@ function productSelected(items) {
     console.log(blockColors)
 };
 
+
 //Ajout au panier :
-let addCard = document.querySelector('#addToCart')
-addCard.addEventListener("click", function(event) {
-    event.preventDefault();
-})
-console.log(addCard)
-//Création des variables : 
-let productTitle = document.getElementById("title").innerText;
-let productImage = document.querySelector(".item__img").src;
-let productPrice = document.getElementById("price").innerText;
-let productQuantity = document.getElementById("quantity").value;
-let productColors = document.getElementById("colors").value; 
+document.querySelector('#addToCart').addEventListener("click", (event) =>  {
+    //event.preventDefault();
 
-//Création de l'objet à rajouter au panier :
-let objectBasket = {
-    product,
-    productImage,
-    productTitle,
-    productQuantity,
-    productColors,
-};
+    //Création des variables : 
+    let productTitle = document.getElementById("title").innerText;
+    let productImage = document.querySelector(".item__img").src;
+    let productPrice = document.getElementById("price").innerText;
+    let productQuantity = document.getElementById("quantity").value;
+    let productColors = document.getElementById("colors").value; 
 
-let basket = [];
-//envoyer le produit dans le localstorage :
-let productLocalStorage = JSON.parse(localStorage.getItem("objectBasket"))
+    //Création de l'objet à rajouter au panier :
+    let objectBasket = {
+        product,
+        productImage,
+        productTitle,
+        productQuantity,
+        productColors,
+    };
+    console.log(objectBasket);
 
-function productChecked(productLocalstorage, basket) {
+
+    basket = [];
+    //envoyer le produit dans le localstorage :
+    let productLocalStorage = JSON.parse(localStorage.getItem("objectBasket"));
+    console.log(productLocalStorage);
+
+    localStorage.setItem("articles", JSON.stringify(productLocalStorage));
+});
+
+/*function productChecked(productLocalstorage, basket) {
     const object = productLocalstorage.find(e => e.id === basket.rpoduct && e.productColors === basket.productColors);
     if (object) {
         const n = parseInt(object.productQuantity);
@@ -79,6 +84,6 @@ function productChecked(productLocalstorage, basket) {
     }
 
     return productLocalstorage;
-};
+};*/
 
 
