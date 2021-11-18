@@ -14,7 +14,6 @@ fetch("http://localhost:3000/api/products/" + product)
 
 
 function productSelected(items) {
-
     //récupération de l'image :
     let blockImage = document.querySelector('.item__img');
     blockImage.innerHTML = `<img src=${items.imageUrl} alt=${items.altTxt}>`;
@@ -28,7 +27,6 @@ function productSelected(items) {
     blockPrice.innerHTML = `<span id="price">${items.price}</span>€</p>`;
 
     //récupération de la description :
-    //<p id="description"><!-- Dis enim malesuada risus sapien gravida nulla nisl arcu. --></p>
     let blockDescription = document.getElementById('description');
     blockDescription.innerHTML = `<p id="description">${items.description}</p>`;
 
@@ -41,7 +39,46 @@ function productSelected(items) {
         document.getElementById("colors").appendChild(optionColor);
     };
     console.log(blockColors)
-    
+};
+
+//Ajout au panier :
+let addCard = document.querySelector('#addToCart')
+addCard.addEventListener("click", function(event) {
+    event.preventDefault();
+})
+console.log(addCard)
+//Création des variables : 
+let productTitle = document.getElementById("title").innerText;
+let productImage = document.querySelector(".item__img").src;
+let productPrice = document.getElementById("price").innerText;
+let productQuantity = document.getElementById("quantity").value;
+let productColors = document.getElementById("colors").value; 
+
+//Création de l'objet à rajouter au panier :
+let objectBasket = {
+    product,
+    productImage,
+    productTitle,
+    productQuantity,
+    productColors,
+};
+
+let basket = [];
+//envoyer le produit dans le localstorage :
+let productLocalStorage = JSON.parse(localStorage.getItem("objectBasket"))
+
+function productChecked(productLocalstorage, basket) {
+    const object = productLocalstorage.find(e => e.id === basket.rpoduct && e.productColors === basket.productColors);
+    if (object) {
+        const n = parseInt(object.productQuantity);
+        const m = parseInt(basket.productQuantity);
+        object.productQuantity = (n + m).toString();
+    }
+    else {
+        productLocalstorage.push(basket)
+    }
+
+    return productLocalstorage;
 };
 
 
